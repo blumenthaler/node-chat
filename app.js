@@ -19,4 +19,16 @@ const io = socketio(server)
 
 io.on('connection', socket => {
     console.log("New user connected")
+
+    socket.username = "Anonymous"
+
+    socket.on('change_username', data => {
+        socket.username = data.username
+    })
 })
+
+// const connect = () => {
+//     let socket = io.connect('http://localhost:3000')
+// }
+
+// connect()
